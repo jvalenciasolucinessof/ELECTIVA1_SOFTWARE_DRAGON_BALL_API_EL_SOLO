@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 import { getCharacters } from "../api/getCharacters";
 import type { Item } from "../interfaces/characters";
+import { CharacterCard } from "./CharacterCard";
+import styles from "../assets/css/ListCharacters.module.css";
 
 export const ListCharacters = () => {
   const [data, setData] = useState<Item[]>([]);
 
   useEffect(() => {
-    getCharacters().then((charactes) => {
-      console.log("charactes", JSON.stringify(charactes, null, 2));
-      setData(charactes);
+    getCharacters().then((characters) => {
+      setData(characters);
     });
   }, []);
 
   return (
-    <div>
-      {data.map((character) => (
-        <div key={character.id}>
-          <h2>{character.name}</h2>
-          <p>Raza: {character.race}</p>
-          <p>Ki: {character.ki}</p>
-          <p>Género: {character.gender}</p>
-          <img src={character.image} alt={character.name} width="200" />
-        </div>
-      ))}
+    <div className={styles.container}>
+      <h1>Personajes</h1>
+
+      <div className={styles.grid}>
+        {data.map((character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </div>
     </div>
   );
 };
