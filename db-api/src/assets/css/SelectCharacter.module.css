@@ -1,0 +1,29 @@
+.detail {
+  width: 90%;
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.detail img {
+  width: 220px;
+  height: 280px;
+  object-fit: contain;
+  display: block;
+  margin: 20px auto;
+}
+
+.detail h2 {
+  text-align: center;
+}
+
+.detail p {
+  line-height: 1.5;
+}
+
+.detail button {
+  padding: 8px 15px;
+  border: 1px solid #aaa;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
