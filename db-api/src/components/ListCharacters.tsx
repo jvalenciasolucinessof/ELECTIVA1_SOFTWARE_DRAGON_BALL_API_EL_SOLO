@@ -14,8 +14,17 @@ export const ListCharacters = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("");
-  const [selectedCharacter, setSelectedCharacter] =
-    useState<Item | null>(null);
+  const [selectedCharacter, setSelectedCharacter] = useState<Item | null>(null);
+
+  const [favorites, setFavorites] = useState<number[]>(() => {
+    const saved = localStorage.getItem("favorites");
+
+    if (saved) {
+      return JSON.parse(saved) as number[];
+    }
+
+    return [];
+  });
 
   useEffect(() => {
     getCharacters()
@@ -31,8 +40,20 @@ export const ListCharacters = () => {
   }, []);
 
   const charactersFiltered = data.filter((character) =>
-    character.name.toLowerCase().includes(filter.toLowerCase())
+    character.name.toLowerCase().includes(filter.toLowerCase()),
   );
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  const markCharacter = (id: number) => {
+    if (favorites.includes(id)) {
+      setFavorites(favorites.filter((item) => item !== id));
+    } else {
+      setFavorites([...favorites, id]);
+    }
+  };
 
   if (loading) {
     return (
@@ -63,6 +84,7 @@ export const ListCharacters = () => {
   return (
     <div className={styles.container}>
       <h1>Personajes</h1>
+      <p>Favoritos: {favorites.length}</p>
 
       <InputSearch onSearch={setFilter} />
 
@@ -75,6 +97,8 @@ export const ListCharacters = () => {
               key={character.id}
               character={character}
               onSelect={setSelectedCharacter}
+              marked={favorites.includes(character.id)}
+              onMarked={markCharacter}
             />
           ))}
         </div>
