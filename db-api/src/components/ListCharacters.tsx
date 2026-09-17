@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-
 import { getCharacters } from "../api/getCharacters";
 import type { Item } from "../interfaces/characters";
-
 import { CharacterCard } from "./CharacterCard";
 import { InputSearch } from "./InputSearch";
 import { SelectCharacters } from "./SelectCharacters";
-
 import styles from "../assets/css/ListCharacters.module.css";
 
 export const ListCharacters = () => {
@@ -26,7 +23,10 @@ export const ListCharacters = () => {
     return [];
   });
 
-  useEffect(() => {
+  const loadCharacters = () => {
+    setLoading(true);
+    setError(null);
+
     getCharacters()
       .then((characters) => {
         setData(characters);
@@ -37,6 +37,10 @@ export const ListCharacters = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadCharacters();
   }, []);
 
   const charactersFiltered = data.filter((character) =>
@@ -68,6 +72,10 @@ export const ListCharacters = () => {
     return (
       <div className={styles.errorContainer}>
         <span className={styles.error}>{error}</span>
+
+        <button className={styles.retryButton} onClick={loadCharacters}>
+          Intentar de nuevo
+        </button>
       </div>
     );
   }
