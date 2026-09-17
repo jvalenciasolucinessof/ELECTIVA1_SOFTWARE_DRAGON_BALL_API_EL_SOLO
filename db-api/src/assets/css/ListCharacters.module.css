@@ -1,6 +1,7 @@
 * {
   font-family: Arial, sans-serif;
 }
+
 .container {
   width: 90%;
   max-width: 1200px;
@@ -11,6 +12,49 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+.loading {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 35px;
+  height: 35px;
+  border: 4px solid #ddd;
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorContainer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 40px;
 }
 
 @media (max-width: 900px) {
