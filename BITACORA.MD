@@ -37,7 +37,6 @@ Se completaron e integraron los avances de RF-01, RF-02 y RF-03 mediante sus res
 | Fecha | Integrante | Herramienta | Consulta | Uso de la respuesta |
 | --- | --- | --- | --- | --- |
 | 2026-09-16 | JUAN PABLO GALLEGO VALENCIA | ChatGPT  | Ayuda para redactar y organizar los archivos Markdown del proyecto. | Se utilizó IA para preparar el contenido de README.md, BITACORA.md, tomando como base las instrucciones del taller y los commits realizados. |
-
 ## Jornada del 17 de septiembre de 2026
 
 **Integrante:** JUAN PABLO GALLEGO VALENCIA  
@@ -47,19 +46,30 @@ Se completaron e integraron los avances de RF-01, RF-02 y RF-03 mediante sus res
 
 | Actividad | Commit |
 | --- | --- |
-| Incorporación del componente SelectCharacters e integración con ListCharacters para la funcionalidad de detalle de RF-04. | `53f707d` |
-| Integración de RF-04 mediante el pull request #5 desde feature/rf04-detalle. | `fc0dfc0` |
+| Incorporación del componente SelectCharacters e integración con ListCharacters para mostrar el detalle de los personajes, correspondiente a RF-04. | `53f707d` |
+| Integración de RF-04 en develop mediante el pull request #5. | `fc0dfc0` |
+| Implementación de favoritos en ListCharacters y marcado de personajes en CharacterCard, correspondiente a RF-05, con contador y persistencia en localStorage. | `5fedf23` |
+| Integración de RF-05 en develop mediante el pull request #7. | `d8dc4ac` |
+| Implementación del botón de reintento en ListCharacters y mejora del manejo de errores para repetir una petición fallida sin recargar la página, correspondiente a RF-06. | `b185dc1` |
+| Integración de RF-06 en develop mediante el pull request #8. | `8a08ae7` |
 
 ### Dificultades encontradas
 
-Tuve dificultades con la navegación mediante botones entre el listado y el detalle de los personajes.
+Durante RF-04 tuve dificultades con la navegación mediante botones entre el listado y el detalle de los personajes.
+
+En RF-05 no tuve dificultades, ya que contaba con conocimientos previos sobre localStorage. La implementación de RF-06 también se realizó sin problemas.
 
 ### Cómo las resolví
 
-Para resolver la navegación, consulté la documentación oficial de React sobre eventos y renderizado condicional. Separé la vista de detalle en un componente independiente y ajusté la interacción de los botones.
+Para resolver la navegación de RF-04, consulté la documentación oficial de React sobre manejo de eventos y renderizado condicional. Separé el detalle en un componente independiente y ajusté la interacción de los botones.
+Para RF-05 y RF-06 no fue necesario resolver bloqueos, porque no se presentaron.
 
-Referencias consultadas:
+### Decisiones tomadas
+
+- Separar el detalle del listado para mantener responsabilidades claras.
+- Conservar los favoritos en localStorage para que no se pierdan al recargar la aplicación.
+- Permitir repetir una petición fallida mediante un botón, sin recargar toda la página.
 
 ### Estado al finalizar la jornada
 
-RF-04 quedó integrado mediante el pull request #5. El detalle de los personajes se organizó en un componente separado.
+Los seis requisitos funcionales, desde RF-01 hasta RF-06, quedaron implementados e integrados en develop.
