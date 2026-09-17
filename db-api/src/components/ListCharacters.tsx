@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
+
 import { getCharacters } from "../api/getCharacters";
 import type { Item } from "../interfaces/characters";
+
 import { CharacterCard } from "./CharacterCard";
-import styles from "../assets/css/ListCharacters.module.css";
 import { InputSearch } from "./InputSearch";
+import { SelectCharacters } from "./SelectCharacters";
+
+import styles from "../assets/css/ListCharacters.module.css";
 
 export const ListCharacters = () => {
   const [data, setData] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<string>("");
+  const [filter, setFilter] = useState("");
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<Item | null>(null);
 
   useEffect(() => {
-    setLoading(true);
     getCharacters()
       .then((characters) => {
         setData(characters);
       })
-      .catch((e) => {
-        setError(e || "Error al cargar los personajes");
+      .catch(() => {
+        setError("Error al cargar los personajes");
       })
       .finally(() => {
         setLoading(false);
@@ -26,7 +31,7 @@ export const ListCharacters = () => {
   }, []);
 
   const charactersFiltered = data.filter((character) =>
-    character.name.toLowerCase().includes(filter.toLowerCase()),
+    character.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   if (loading) {
@@ -37,6 +42,7 @@ export const ListCharacters = () => {
       </div>
     );
   }
+
   if (error) {
     return (
       <div className={styles.errorContainer}>
@@ -44,13 +50,16 @@ export const ListCharacters = () => {
       </div>
     );
   }
-  if (data.length === 0) {
+
+  if (selectedCharacter) {
     return (
-      <div className={styles.empty}>
-        <p>No se encontraron personajes.</p>
-      </div>
+      <SelectCharacters
+        character={selectedCharacter}
+        onBack={() => setSelectedCharacter(null)}
+      />
     );
   }
+
   return (
     <div className={styles.container}>
       <h1>Personajes</h1>
@@ -58,13 +67,15 @@ export const ListCharacters = () => {
       <InputSearch onSearch={setFilter} />
 
       {charactersFiltered.length === 0 ? (
-        <div className={styles.empty}>
-          <p>No se encontraron personajes.</p>
-        </div>
+        <p>No se encontraron personajes.</p>
       ) : (
         <div className={styles.grid}>
           {charactersFiltered.map((character) => (
-            <CharacterCard key={character.id} character={character} />
+            <CharacterCard
+              key={character.id}
+              character={character}
+              onSelect={setSelectedCharacter}
+            />
           ))}
         </div>
       )}

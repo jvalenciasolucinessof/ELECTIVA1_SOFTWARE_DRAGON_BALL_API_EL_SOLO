@@ -1,11 +1,13 @@
 import type { Item } from "../interfaces/characters";
+
 import styles from "../assets/css/CharacterCard.module.css";
 
 interface Props {
   character: Item;
+  onSelect: (character: Item) => void;
 }
 
-export const CharacterCard = ({ character }: Props) => {
+export const CharacterCard = ({ character, onSelect }: Props) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -15,22 +17,30 @@ export const CharacterCard = ({ character }: Props) => {
           className={styles.image}
         />
       </div>
+
       <div className={styles.content}>
         <h2>{character.name}</h2>
+
         <p>
-          <b>Raza:</b>
-          {character.race}
+          <b>Raza:</b> {character.race}
         </p>
+
         <p>
           <b>Género:</b> {character.gender}
         </p>
+
         <p>
           <b>Ki:</b> {character.ki}
         </p>
+
         <p>
           <b>Afiliación:</b> {character.affiliation}
         </p>
       </div>
+
+      <button className={styles.button} onClick={() => onSelect(character)}>
+        Ver más
+      </button>
     </div>
   );
 };
