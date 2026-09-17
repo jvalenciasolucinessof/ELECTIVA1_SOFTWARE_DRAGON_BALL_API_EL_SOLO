@@ -75,3 +75,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+.retryButton {
+  margin-top: 15px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #222;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.retryButton:hover {
+  background-color: #444;
+}
