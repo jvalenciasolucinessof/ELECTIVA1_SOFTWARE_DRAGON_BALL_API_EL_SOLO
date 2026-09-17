@@ -18,6 +18,9 @@
 | Integración de RF-01 en develop mediante el pull request #1. | `906e995` — Merge pull request #1 |
 | Desarrollo de RF-02, comenzando por el estado de cargando y agregando el manejo de errores en el listado. | `6caaa64` — add loading and error handling to ListCharacters component |
 | Integración de RF-02 en develop mediante el pull request #2. | `5ef20b0` — Merge pull request #2 |
+| Incorporación de la bitácora de desarrollo correspondiente al 16 de septiembre de 2026. | `872bd2c` — add development log for September 16, 2026 |
+| Creación del componente InputSearch e integración en ListCharacters para la búsqueda de personajes, correspondiente a RF-03. | `03fb0bf` — Incorporación e integración de InputSearch |
+| Integración de RF-03 mediante el pull request #4 desde feature/rf03-busqueda. | `ea73266` — Merge pull request #4 |
 
 ### Dificultades encontradas
 
@@ -29,7 +32,7 @@ No fue necesario aplicar soluciones a bloqueos, porque no se presentaron.
 
 ### Estado al finalizar la jornada
 
-El trabajo de RF-01 y RF-02 quedó integrado en la rama develop. Todas las actividades registradas en esta entrada corresponden al 16 de septiembre de 2026.
+Se completaron e integraron los avances de RF-01, RF-02 y RF-03 mediante sus respectivos pull requests. También se incorporó la bitácora de desarrollo. No se reportaron dificultades durante esta jornada. Todas las actividades de esta entrada corresponden al 16 de septiembre de 2026.
 
 | Fecha | Integrante | Herramienta | Consulta | Uso de la respuesta |
 | --- | --- | --- | --- | --- |
