@@ -37,3 +37,29 @@ Se completaron e integraron los avances de RF-01, RF-02 y RF-03 mediante sus res
 | Fecha | Integrante | Herramienta | Consulta | Uso de la respuesta |
 | --- | --- | --- | --- | --- |
 | 2026-09-16 | JUAN PABLO GALLEGO VALENCIA | ChatGPT  | Ayuda para redactar y organizar los archivos Markdown del proyecto. | Se utilizó IA para preparar el contenido de README.md, BITACORA.md, tomando como base las instrucciones del taller y los commits realizados. |
+
+## Jornada del 17 de septiembre de 2026
+
+**Integrante:** JUAN PABLO GALLEGO VALENCIA  
+**Equipo:** EL_SOLO
+
+### Trabajo realizado
+
+| Actividad | Commit |
+| --- | --- |
+| Incorporación del componente SelectCharacters e integración con ListCharacters para la funcionalidad de detalle de RF-04. | `53f707d` |
+| Integración de RF-04 mediante el pull request #5 desde feature/rf04-detalle. | `fc0dfc0` |
+
+### Dificultades encontradas
+
+Tuve dificultades con la navegación mediante botones entre el listado y el detalle de los personajes.
+
+### Cómo las resolví
+
+Para resolver la navegación, consulté la documentación oficial de React sobre eventos y renderizado condicional. Separé la vista de detalle en un componente independiente y ajusté la interacción de los botones.
+
+Referencias consultadas:
+
+### Estado al finalizar la jornada
+
+RF-04 quedó integrado mediante el pull request #5. El detalle de los personajes se organizó en un componente separado.

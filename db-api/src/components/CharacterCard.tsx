@@ -5,9 +5,16 @@ import styles from "../assets/css/CharacterCard.module.css";
 interface Props {
   character: Item;
   onSelect: (character: Item) => void;
+  marked: boolean;
+  onMarked: (id: number) => void;
 }
 
-export const CharacterCard = ({ character, onSelect }: Props) => {
+export const CharacterCard = ({
+  character,
+  onSelect,
+  marked,
+  onMarked,
+}: Props) => {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -40,6 +47,12 @@ export const CharacterCard = ({ character, onSelect }: Props) => {
 
       <button className={styles.button} onClick={() => onSelect(character)}>
         Ver más
+      </button>
+      <button
+        className={marked ? styles.buttonMarked : styles.button}
+        onClick={() => onMarked(character.id)}
+      >
+        {marked ? "Desmarcar" : "Marcar"}
       </button>
     </div>
   );
